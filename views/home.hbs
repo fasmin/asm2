@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATNToys</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">ATNToys</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="/">Home</a></li>
+          <li> <a href="/insert">Create a new Product!</a></li>
+          <li><a href="/">View all Products</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container p-3 my-3 bg-dark text-white">
+    <h1 style="text-align: center;">PRODUCT MANAGEMENT</h1>
+  </div>
+  <div class="container">
+    <form action="/search" method="post">
+      <input type="text" name="txtName">
+      <input type="submit" value="Search Product">
+    </form>
+  </div>
+  <br>
+
+
+  <div class="container">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Picture</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each products }}
+        <tr>
+          <td>{{this.name}}</td>
+          <td>{{this.price}} VND</td>
+          <td><img src="{{this.picture}}" width="250" height="250"></td>
+          <td>
+            <a onclick=" return confirm('Are you sure?')" href="/delete/{{_id}}">Delete</a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+
+</body>
+
+</html>
